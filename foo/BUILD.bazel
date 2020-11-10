@@ -1,0 +1,15 @@
+load("@io_bazel_rules_go//go:def.bzl", "go_library", "go_test")
+
+go_test(
+    name = "foo_test",
+    race = "on",
+    srcs = ["foo_test.go"],
+    embed = [":foo"],
+)
+
+go_library(
+    name = "foo",
+    srcs = ["foo.go"],
+    importpath = "github.com/arjantop-cai/rules-go-race-coverage/foo",
+    visibility = ["//visibility:public"],
+)
